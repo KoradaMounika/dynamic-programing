@@ -1,0 +1,20 @@
+v=4
+inf=99
+def floyd_warshall(g):
+    dist=list(map(lambda i: list(map(lambda j: j,i)),g))
+    for k in range(v):
+        for i in range(v):
+            for j in range(v):
+                dist[i][j]=min(dist[i][j],dist[i][k]+dist[k][j])
+    print_sol(dist)
+def print_sol(dist):
+    for i in range(v):
+        for j in range(v):
+            if(dist[i][j]==inf):
+                print('inf',end=' ')
+            else:
+                print(dist[i][j],end=' ')
+        print(' ')
+g=[[0,3,inf,5],[2,0,inf,4],[inf,1,0,inf],[inf,inf,2,0]]
+floyd_warshall(g)
+
